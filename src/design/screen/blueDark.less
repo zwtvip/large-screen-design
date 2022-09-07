@@ -1,0 +1,60 @@
+@import '../config.less';
+
+@font-face {
+  font-family: YouSheBiaoTiHei;
+  src: url('/@/assets/fonts/YouSheBiaoTiHei.ttf');
+}
+
+[data-theme='blueDark'] {
+  .ant-form-item-label > label {
+    color: @white;
+  }
+
+  .ant-input {
+    background-color: transparent;
+    color: @primary-color-blueDark;
+  }
+
+  .ant-btn,
+  .ant-btn-primary:not(.ant-btn-background-ghost):not([disabled]),
+  .ant-input-group-addon,
+  .ant-input-affix-wrapper {
+    color: @primary-color-blueDark;
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: 0 0 10px @border-color-blueDark inset;
+  }
+
+  .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
+    .ant-input-search-button:not(.ant-btn-primary) {
+      color: @primary-color-blueDark;
+    }
+  }
+
+  .ant-btn:not([disabled]):hover {
+    background-color: transparent;
+  }
+
+  .ant-card-head {
+    min-height: 42px;
+    background: url('/@/assets/images/screen/card-header-bg.png') no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    border-radius: 0;
+  }
+
+  .ant-card-cover {
+    background: url('/@/assets/images/screen/card-body-bg.png') no-repeat;
+    background-size: 100% 100%;
+    padding: 5px 5px 10px 5px;
+  }
+
+  .ant-card {
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  .ant-card-bordered {
+    border: none;
+  }
+}

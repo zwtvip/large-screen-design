@@ -1,4 +1,5 @@
 import type { LockInfo, UserInfo } from '/#/store';
+import type { ModuleInfo, CardItem, CardInfo } from '/#/screen';
 import type { ProjectConfig } from '/#/config';
 import type { RouteLocationNormalized } from 'vue-router';
 
@@ -13,6 +14,9 @@ import {
   APP_LOCAL_CACHE_KEY,
   APP_SESSION_CACHE_KEY,
   MULTIPLE_TABS_KEY,
+  MODULE_LIST_KEY,
+  CARD_LIST_KEY,
+  TEMP_CARD_LIST_KEY,
 } from '/@/enums/cacheEnum';
 import { DEFAULT_CACHE_TIME } from '/@/settings/encryptionSetting';
 import { toRaw } from 'vue';
@@ -25,6 +29,9 @@ interface BasicStore {
   [LOCK_INFO_KEY]: LockInfo;
   [PROJ_CFG_KEY]: ProjectConfig;
   [MULTIPLE_TABS_KEY]: RouteLocationNormalized[];
+  [MODULE_LIST_KEY]: ModuleInfo[];
+  [CARD_LIST_KEY]: CardItem[];
+  [TEMP_CARD_LIST_KEY]: CardInfo[];
 }
 
 type LocalStore = BasicStore;

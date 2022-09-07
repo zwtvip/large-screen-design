@@ -46,3 +46,12 @@ export interface BeforeMiniState {
   menuMode?: MenuModeEnum;
   menuType?: MenuTypeEnum;
 }
+
+// 大屏模块信息
+export interface ModuleInfo {
+  moduleId: string;
+  moduleName: string;
+  checked: boolean;
+  filename: string | Component;
+  [key: string]: Component | string | boolean;
+}

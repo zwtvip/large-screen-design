@@ -12,6 +12,7 @@ export interface DemoListItem {
   name: string;
   no: number;
   status: number;
+  imgs: string[];
 }
 
 /**

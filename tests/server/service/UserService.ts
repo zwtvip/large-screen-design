@@ -2,14 +2,14 @@ import { Result } from '../utils';
 
 const fakeUserInfo = {
   userId: '1',
-  username: 'vben',
-  realName: 'Vben Admin',
+  username: 'zwt',
+  realName: '章文涛',
   desc: 'manager',
   password: '123456',
   token: 'fakeToken1',
   roles: [
     {
-      roleName: 'Super Admin',
+      roleName: '超级管理员',
       value: 'super',
     },
   ],

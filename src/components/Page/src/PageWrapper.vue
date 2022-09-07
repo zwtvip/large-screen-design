@@ -89,6 +89,11 @@
       );
       setCompensation({ useLayoutFooter: true, elements: [footerRef] });
 
+      provide(
+        'contentHeight',
+        computed(() => `${unref(contentHeight)}px`),
+      );
+
       const getClass = computed(() => {
         return [
           prefixCls,
