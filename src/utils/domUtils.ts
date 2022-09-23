@@ -119,6 +119,14 @@ export function getViewportOffset(element: Element): ViewportOffsetResult {
   };
 }
 
+export function observerDomResize(dom, callback) {
+  const MutationObserver =
+    window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+  const observer = new MutationObserver(callback);
+  observer.observe(dom, { attributes: true, attributeFilter: ['style'], attributeOldValue: true });
+  return observer;
+}
+
 export function hackCss(attr: string, value: string) {
   const prefix: string[] = ['webkit', 'Moz', 'ms', 'OT'];
 

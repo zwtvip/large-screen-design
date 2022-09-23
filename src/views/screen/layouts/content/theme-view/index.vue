@@ -12,7 +12,9 @@
         :resizable="false"
         :active="item.active"
       >
-        <component :is="item.filename" class="currentComp" />
+        <BorderBoxAnimation>
+          <component :is="item.filename" class="currentComp" />
+        </BorderBoxAnimation>
       </Vue3DraggableResizable>
     </DraggableContainer>
   </div>
@@ -32,6 +34,7 @@
   import Vue3DraggableResizable from 'vue3-draggable-resizable';
   import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css';
   import type { CardInfo } from '/#/screen';
+  import BorderBoxAnimation from '../components/border-box-animation.vue';
   import { buildUUID } from '/@/utils/uuid';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { moduleComp } from '../theme-manage/data';
@@ -41,6 +44,7 @@
     components: {
       Vue3DraggableResizable,
       DraggableContainer,
+      BorderBoxAnimation,
       ...moduleComp,
     },
     setup() {
@@ -98,8 +102,6 @@
 <style lang="less" scoped>
   @prefix-cls: ~'@{namespace}-theme-view';
   .@{prefix-cls} {
-    background: @blue-content-bg;
-
     .currentComp {
       height: 100%;
 
@@ -108,6 +110,8 @@
 
         .ant-card-body {
           padding: 0;
+          height: 100%;
+          color: @white;
         }
       }
     }

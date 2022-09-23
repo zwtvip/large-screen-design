@@ -74,37 +74,43 @@
         @drag-end="dragEnd"
         @resize-end="resizeEnd"
       >
-        <Card :hoverable="true" :class="`${prefixCls}__card`" class="h-full w-full">
-          <template #title>
-            <a-input v-model:value="item.cardName" :bordered="false" placeholder="请输入卡片标题" />
-          </template>
-          <template #extra>
-            <div :class="`${prefixCls}__card-extra`">
-              <Tooltip title="编辑卡片">
-                <EditOutlined class="icon" @click="handleEdit(item)" />
-              </Tooltip>
-              <Tooltip title="重置卡片">
-                <RedoOutlined class="icon mx-4" @click="handleReset(item)" />
-              </Tooltip>
-              <Tooltip title="删除卡片">
-                <Popconfirm
-                  title="是否删除卡片?"
-                  ok-text="是"
-                  cancel-text="否"
-                  @confirm="confirm(item.cardId)"
-                  @cancel="cancel"
-                >
-                  <DeleteOutlined
-                    v-if="cardList.length > 1"
-                    class="icon"
-                    @click="handleDelete(item.cardId)"
-                  />
-                </Popconfirm>
-              </Tooltip>
-            </div>
-          </template>
-          <component :is="item.filename" :record="item" class="currentComp" />
-        </Card>
+        <BorderBoxAnimation>
+          <Card :hoverable="true" :class="`${prefixCls}__card`" class="h-full w-full">
+            <template #title>
+              <a-input
+                v-model:value="item.cardName"
+                :bordered="false"
+                placeholder="请输入卡片标题"
+              />
+            </template>
+            <template #extra>
+              <div :class="`${prefixCls}__card-extra`">
+                <Tooltip title="编辑卡片">
+                  <EditOutlined class="icon" @click="handleEdit(item)" />
+                </Tooltip>
+                <Tooltip title="重置卡片">
+                  <RedoOutlined class="icon mx-4" @click="handleReset(item)" />
+                </Tooltip>
+                <Tooltip title="删除卡片">
+                  <Popconfirm
+                    title="是否删除卡片?"
+                    ok-text="是"
+                    cancel-text="否"
+                    @confirm="confirm(item.cardId)"
+                    @cancel="cancel"
+                  >
+                    <DeleteOutlined
+                      v-if="cardList.length > 1"
+                      class="icon"
+                      @click="handleDelete(item.cardId)"
+                    />
+                  </Popconfirm>
+                </Tooltip>
+              </div>
+            </template>
+            <component :is="item.filename" :record="item" class="currentComp" />
+          </Card>
+        </BorderBoxAnimation>
       </Vue3DraggableResizable>
     </DraggableContainer>
     <CardDrawer @register="registerDrawer" @success="handleSuccess" />
@@ -129,6 +135,7 @@
   import { Card, Tooltip, Popconfirm, message } from 'ant-design-vue';
   import { EditOutlined, DeleteOutlined, RedoOutlined } from '@ant-design/icons-vue';
   import { useDesign } from '/@/hooks/web/useDesign';
+  import BorderBoxAnimation from '../components/border-box-animation.vue';
   import { useDrawer } from '/@/components/Drawer';
   import { useScreenStore } from '/@/store/modules/screen';
   import { buildUUID } from '/@/utils/uuid';
@@ -148,6 +155,7 @@
       EditOutlined,
       CardDrawer,
       RedoOutlined,
+      BorderBoxAnimation,
       ...moduleComp,
     },
     setup() {
@@ -236,7 +244,6 @@
               head.style.display = 'none';
               body.style.height = '100%';
               bordered.style.border = 'none';
-              body.style.borderTop = '1px solid #f0f0f0';
               body.style.boxSizing = 'border-box';
             }
           });
@@ -319,7 +326,7 @@
           height: 100%;
           box-sizing: border-box;
           color: @white;
-          border-top: 1px solid #f0f0f0;
+          background: none;
         }
       }
     }

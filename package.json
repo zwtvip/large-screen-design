@@ -36,6 +36,7 @@
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-vue": "^6.1.0",
     "@iconify/iconify": "^2.2.1",
+    "@jiaminghi/data-view": "^2.10.0",
     "@logicflow/core": "^1.1.13",
     "@logicflow/extension": "^1.1.13",
     "@vue/runtime-core": "^3.2.33",

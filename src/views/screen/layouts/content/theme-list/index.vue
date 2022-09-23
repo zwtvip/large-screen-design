@@ -33,36 +33,38 @@
         <template v-for="item in themeList" :key="item.title">
           <a-col :span="6">
             <a-list-item>
-              <a-card :hoverable="false" :class="`${prefixCls}__card`">
-                <template #title> {{ item.themeName }} </template>
-                <template #extra>
-                  <div :class="`${prefixCls}__card-extra`">
-                    <Tooltip title="管理主题">
-                      <AppstoreOutlined class="icon" @click="handleManage(item)" />
-                    </Tooltip>
-                    <Tooltip title="查看主题">
-                      <FolderViewOutlined class="icon" @click="handleView(item)" />
-                    </Tooltip>
-                    <Tooltip title="编辑主题">
-                      <EditOutlined class="icon" @click="handleEdit(item)" />
-                    </Tooltip>
-                    <Tooltip title="删除主题">
-                      <Popconfirm
-                        title="是否删除该主题?"
-                        ok-text="是"
-                        cancel-text="否"
-                        @confirm="confirm(item.themeId)"
-                        @cancel="cancel"
-                      >
-                        <DeleteOutlined class="icon" />
-                      </Popconfirm>
-                    </Tooltip>
-                  </div>
-                </template>
-                <template #cover>
-                  <Image :src="item.images[0]" />
-                </template>
-              </a-card>
+              <BorderBoxAnimation>
+                <a-card :hoverable="false" :class="`${prefixCls}__card`" class="h-full w-full">
+                  <template #title> {{ item.themeName }} </template>
+                  <template #extra>
+                    <div :class="`${prefixCls}__card-extra`">
+                      <Tooltip title="管理主题">
+                        <AppstoreOutlined class="icon" @click="handleManage(item)" />
+                      </Tooltip>
+                      <Tooltip title="查看主题">
+                        <FolderViewOutlined class="icon" @click="handleView(item)" />
+                      </Tooltip>
+                      <Tooltip title="编辑主题">
+                        <EditOutlined class="icon" @click="handleEdit(item)" />
+                      </Tooltip>
+                      <Tooltip title="删除主题">
+                        <Popconfirm
+                          title="是否删除该主题?"
+                          ok-text="是"
+                          cancel-text="否"
+                          @confirm="confirm(item.themeId)"
+                          @cancel="cancel"
+                        >
+                          <DeleteOutlined class="icon" />
+                        </Popconfirm>
+                      </Tooltip>
+                    </div>
+                  </template>
+                  <template #cover>
+                    <Image :src="item.images[0]" />
+                  </template>
+                </a-card>
+              </BorderBoxAnimation>
             </a-list-item>
           </a-col>
         </template>
@@ -98,6 +100,7 @@
   import { useModal } from '/@/components/Modal';
   import ThemeModal from './modals/ThemeModal.vue';
   import { Button } from '/@/components/Button';
+  import BorderBoxAnimation from '../components/border-box-animation.vue';
   import { useSlider, grid, searchFormSchema } from './data';
   import { useScreenStore } from '/@/store/modules/screen';
   import type { ThemeItem } from '/#/screen';

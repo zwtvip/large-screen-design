@@ -12,6 +12,7 @@ specifiers:
   '@commitlint/config-conventional': ^16.2.1
   '@iconify/iconify': ^2.2.1
   '@iconify/json': ^2.1.30
+  '@jiaminghi/data-view': ^2.10.0
   '@logicflow/core': ^1.1.13
   '@logicflow/extension': ^1.1.13
   '@purge-icons/generated': ^0.8.1
@@ -122,6 +123,7 @@ dependencies:
   '@ant-design/colors': 6.0.0
   '@ant-design/icons-vue': 6.1.0_vue@3.2.33
   '@iconify/iconify': 2.2.1
+  '@jiaminghi/data-view': 2.10.0
   '@logicflow/core': 1.1.13
   '@logicflow/extension': 1.1.13
   '@vue/runtime-core': 3.2.33
@@ -1743,6 +1745,47 @@ packages:
       '@intlify/message-resolver': 9.1.9
       '@intlify/runtime': 9.1.9
       '@intlify/shared': 9.1.9
+    dev: false
+
+  /@jiaminghi/bezier-curve/0.0.9:
+    resolution: {integrity: sha512-u9xJPOEl6Dri2E9FfmJoGxYQY7vYJkURNX04Vj64tdi535tPrpkuf9Sm0lNr3QTKdHQh0DdNRsaa62FLQNQEEw==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+    dev: false
+
+  /@jiaminghi/c-render/0.4.3:
+    resolution: {integrity: sha512-FJfzj5hGj7MLqqqI2D7vEzHKbQ1Ynnn7PJKgzsjXaZpJzTqs2Yw5OSeZnm6l7Qj7jyPAP53lFvEQNH4o4j6s+Q==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@jiaminghi/bezier-curve': 0.0.9
+      '@jiaminghi/color': 0.1.1
+      '@jiaminghi/transition': 1.1.11
+    dev: false
+
+  /@jiaminghi/charts/0.2.18:
+    resolution: {integrity: sha512-K+HXaOOeWG9OOY1VG6M4mBreeeIAPhb9X+khG651AbnwEwL6G2UtcAQ8GWCq6GzhczcLwwhIhuaHqRygwHC0sA==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@jiaminghi/c-render': 0.4.3
+    dev: false
+
+  /@jiaminghi/color/0.1.1:
+    resolution: {integrity: sha512-M09+Sb5HGqVim0zo+nG5gU1v+6gXT8ptr0BZR6dMGt83XmCJgnZtO8s7llTW4hLFFFM5co6geZvTekqLpSPAAQ==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+    dev: false
+
+  /@jiaminghi/data-view/2.10.0:
+    resolution: {integrity: sha512-Cud2MTiMcqc5k2KWabR/svuVQmXHANqURo+yj40370/LdI/gyUJ6LG203hWXEnT1nMCeiv/SLVmxv3PXLScCeA==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@jiaminghi/charts': 0.2.18
+    dev: false
+
+  /@jiaminghi/transition/1.1.11:
+    resolution: {integrity: sha512-owBggipoHMikDHHDW5Gc7RZYlVuvxHADiU4bxfjBVkHDAmmck+fCkm46n2JzC3j33hWvP9nSCAeh37t6stgWeg==}
+    dependencies:
+      '@babel/runtime': 7.17.9
     dev: false
 
   /@jridgewell/resolve-uri/3.0.5:

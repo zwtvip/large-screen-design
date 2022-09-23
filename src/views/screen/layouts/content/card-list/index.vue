@@ -33,30 +33,32 @@
         <template v-for="item in cardList" :key="item.title">
           <a-col :span="6">
             <a-list-item>
-              <a-card :hoverable="true" :class="`${prefixCls}__card`">
-                <template #title> {{ item.cardName }} </template>
-                <template #extra>
-                  <div :class="`${prefixCls}__card-extra`">
-                    <Tooltip title="编辑卡片">
-                      <EditOutlined class="icon mx-4" @click="handleEdit(item)" />
-                    </Tooltip>
-                    <Tooltip title="删除卡片">
-                      <Popconfirm
-                        title="是否删除该卡片?"
-                        ok-text="是"
-                        cancel-text="否"
-                        @confirm="confirm(item.cardId)"
-                        @cancel="cancel"
-                      >
-                        <DeleteOutlined class="icon" />
-                      </Popconfirm>
-                    </Tooltip>
-                  </div>
-                </template>
-                <template #cover>
-                  <Image :src="item.images[0]" />
-                </template>
-              </a-card>
+              <BorderBoxAnimation>
+                <a-card :hoverable="true" :class="`${prefixCls}__card`" class="h-full w-full">
+                  <template #title> {{ item.cardName }} </template>
+                  <template #extra>
+                    <div :class="`${prefixCls}__card-extra`">
+                      <Tooltip title="编辑卡片">
+                        <EditOutlined class="icon mx-4" @click="handleEdit(item)" />
+                      </Tooltip>
+                      <Tooltip title="删除卡片">
+                        <Popconfirm
+                          title="是否删除该卡片?"
+                          ok-text="是"
+                          cancel-text="否"
+                          @confirm="confirm(item.cardId)"
+                          @cancel="cancel"
+                        >
+                          <DeleteOutlined class="icon" />
+                        </Popconfirm>
+                      </Tooltip>
+                    </div>
+                  </template>
+                  <template #cover>
+                    <Image :src="item.images[0]" />
+                  </template>
+                </a-card>
+              </BorderBoxAnimation>
             </a-list-item>
           </a-col>
         </template>
@@ -83,6 +85,7 @@
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { useModal } from '/@/components/Modal';
   import CardModal from './modals/CardModal.vue';
+  import BorderBoxAnimation from '../components/border-box-animation.vue';
   import { Button } from '/@/components/Button';
   import { useScreenStore } from '/@/store/modules/screen';
   import { useSlider, grid, searchFormSchema } from './data';
