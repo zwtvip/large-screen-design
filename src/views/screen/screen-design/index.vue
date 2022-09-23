@@ -11,6 +11,12 @@
       <component :is="`${currentComp}`" v-if="currentComp" />
     </ScrollXReverseTransition>
   </PageWrapper>
+  <Particles
+    id="tsparticles"
+    :particlesInit="particlesInit"
+    :particlesLoaded="particlesLoaded"
+    :options="options"
+  />
 </template>
 
 <script>
@@ -22,6 +28,8 @@
   import { useDesign } from '/@/hooks/web/useDesign';
   import ScreenHeader from '/@/views/screen/layouts/header/ScreenHeader.vue';
   import HeaderDropdown from '/@/views/screen/layouts/header/HeaderDropdown.vue';
+  import { loadFull } from 'tsparticles';
+  import options from '/@/utils/particles';
 
   export default defineComponent({
     name: 'ScreenWrapper',
@@ -48,6 +56,14 @@
       const { prefixCls } = useDesign('screen-wrapper');
       const route = useRoute();
       let currentComp = ref('');
+
+      const particlesInit = async (engine) => {
+        await loadFull(engine);
+      };
+
+      const particlesLoaded = async (container) => {
+        console.log('Particles container loaded', container);
+      };
       watch(
         () => route.name,
         () => {
@@ -66,6 +82,9 @@
       return {
         prefixCls,
         currentComp,
+        options,
+        particlesInit,
+        particlesLoaded,
       };
     },
   });
@@ -74,8 +93,10 @@
 <style lang="less" scoped>
   @prefix-cls: ~'@{namespace}-screen-wrapper';
   .@{prefix-cls} {
-    background: url('/@/assets/images/screen/bg.jpg');
-    background-size: 100% 100%;
+    // background: url('/@/assets/images/screen/bg.jpg');
+    // background-size: 100% 100%;
+    position: relative;
+    z-index: 1;
 
     :deep(.ant-page-header) {
       padding: 0;
