@@ -299,7 +299,8 @@
 
     :deep(.ant-card-body) {
       padding: 0;
-      height: calc(100% - 58.14px);
+      color: @white;
+      height: calc(100% - 47.42px);
 
       .currentComp {
         padding: 0;
@@ -317,6 +318,7 @@
         .ant-card-body {
           height: 100%;
           box-sizing: border-box;
+          color: @white;
           border-top: 1px solid #f0f0f0;
         }
       }

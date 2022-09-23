@@ -80,7 +80,7 @@
           const head = document.querySelector('.currentComp .ant-card-head') as HTMLElement;
           const body = document.querySelector('.currentComp .ant-card-body') as HTMLElement;
           if (head && body) {
-            body.style.height = 'calc(100% - 58.14px)';
+            body.style.height = 'calc(100% - 47.42px)';
           } else if (!head && body) {
             body.style.height = '100%';
           }
