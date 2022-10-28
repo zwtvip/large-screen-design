@@ -43,6 +43,5 @@
 <style lang="less">
   @prefix-cls: ~'@{namespace}-card-position';
   .@{prefix-cls} {
-
   }
 </style>

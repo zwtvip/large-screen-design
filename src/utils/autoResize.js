@@ -5,12 +5,9 @@ export default {
   data() {
     return {
       dom: '',
-
       width: 0,
       height: 0,
-
       debounceInitWHFun: '',
-
       domObserver: '',
     };
   },

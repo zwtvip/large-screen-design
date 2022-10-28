@@ -36,8 +36,8 @@ export const useScreenStore = defineStore({
       const realWidth = window.innerWidth;
       const realHeight = window.innerHeight - headerHeight;
       const gutter = 20;
-      const width = (realWidth - 5 * gutter) / 4;
-      const height = (realHeight - 4 * gutter) / 3;
+      const width = parseInt((realWidth - 5 * gutter) / 4);
+      const height = parseInt((realHeight - 4 * gutter) / 3);
       this.tempCardList = [];
       // 初始化卡片数据
       for (let i = 0; i < 4; i++) {

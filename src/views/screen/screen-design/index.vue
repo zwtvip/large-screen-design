@@ -61,8 +61,8 @@
         await loadFull(engine);
       };
 
-      const particlesLoaded = async (container) => {
-        console.log('Particles container loaded', container);
+      const particlesLoaded = async () => {
+        // console.log('Particles container loaded', container);
       };
       watch(
         () => route.name,

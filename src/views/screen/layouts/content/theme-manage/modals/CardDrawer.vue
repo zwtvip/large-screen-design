@@ -41,7 +41,7 @@
 
 <script lang="ts" setup>
   import { ref, unref } from 'vue';
-  import { List, Card, Checkbox, Image } from 'ant-design-vue';
+  import { List, Card, Checkbox } from 'ant-design-vue';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { useScreenStore } from '/@/store/modules/screen';
@@ -57,12 +57,7 @@
   const prefixCls = ref('module-list');
   const screenStore = useScreenStore();
   const emit = defineEmits(['register', 'success']);
-  const [registerForm, { resetFields }] = useForm({
-    labelWidth: 90,
-    baseColProps: { span: 24 },
-    schemas: searchFormSchema,
-    showActionButtonGroup: false,
-  });
+  const [registerForm, { resetFields, setFieldsValue, getFieldsValue }] = useForm();
   screenStore.setModuleList();
   const moduleList = screenStore.getModuleList;
 
@@ -78,9 +73,9 @@
     setDrawerProps({ confirmLoading: false });
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
-      // setFieldsValue({
-      //   ...data.record,
-      // });
+      setFieldsValue({
+        ...data.record,
+      });
     }
   });
 
@@ -88,8 +83,9 @@
     try {
       // const values = await validate();
       setDrawerProps({ confirmLoading: true });
-      cardInfo.cardName = tempModuleInfo.moduleName;
-      cardInfo.filename = tempModuleInfo.filename;
+      cardInfo.cardName = tempModuleInfo.moduleName || cardInfo.cardName;
+      cardInfo.filename = tempModuleInfo.filename || cardInfo.cardName;
+      cardInfo = Object.assign(cardInfo, getFieldsValue());
       emit('success', cardInfo);
       closeDrawer();
     } finally {
@@ -121,7 +117,7 @@
   //分页相关
   const page = ref(1);
   const pageSize = ref(12);
-  const total = ref(0);
+  const total = ref(moduleList.length);
   const paginationProp = ref({
     showSizeChanger: false,
     showQuickJumper: true,

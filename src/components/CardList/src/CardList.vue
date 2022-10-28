@@ -19,8 +19,7 @@
                   id="slider"
                   v-bind="sliderProp"
                   v-model:value="grid"
-                  @change="
-                  "
+                  @change="sliderChange"
               /></template>
               <Button><TableOutlined /></Button>
             </Tooltip>

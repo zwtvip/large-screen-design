@@ -1,7 +1,6 @@
 <template>
   <Transfer
     :data-source="getdataSource"
-    show-search
     :filter-option="filterOption"
     :render="(item) => item.title"
     :showSelectAll="showSelectAll"

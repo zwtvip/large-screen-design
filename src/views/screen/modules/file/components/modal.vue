@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { EditOutlined, DeleteOutlined, FolderViewOutlined } from '@ant-design/icons-vue';
+  // import { EditOutlined, DeleteOutlined, FolderViewOutlined } from '@ant-design/icons-vue';
   import { Card } from 'ant-design-vue';
 
   const prefixCls = ref('card-wrapper');
@@ -45,9 +45,11 @@
       height: 100%;
       padding: 16px;
     }
+
     &__card {
       width: 100%;
       margin-bottom: -8px;
+
       &-title {
         margin-bottom: 5px;
         font-size: 16px;

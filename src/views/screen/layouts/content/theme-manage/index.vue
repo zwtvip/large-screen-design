@@ -206,7 +206,7 @@
       }
       function handleEdit(record: Recordable) {
         openDrawer(true, {
-          isUpdate: false,
+          isUpdate: true,
           record,
         });
       }
