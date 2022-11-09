@@ -16,6 +16,12 @@ import { setupI18n } from '/@/locales/setupI18n';
 import { registerGlobComp } from '/@/components/registerGlobComp';
 import Particles from 'particles.vue3';
 
+import { isDevMode } from './utils/env';
+
+if (isDevMode()) {
+  import('ant-design-vue/es/style');
+}
+
 async function bootstrap() {
   const app = createApp(App);
 

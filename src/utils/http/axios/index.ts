@@ -18,10 +18,11 @@ import { useI18n } from '/@/hooks/web/useI18n';
 import { joinTimestamp, formatRequestDate } from './helper';
 import { useUserStoreWithOut } from '/@/store/modules/user';
 import { AxiosRetry } from '/@/utils/http/axios/axiosRetry';
+import axios from 'axios';
 
 const globSetting = useGlobSetting();
 const urlPrefix = globSetting.urlPrefix;
-const { createMessage, createErrorModal } = useMessage();
+const { createMessage, createErrorModal, createSuccessModal } = useMessage();
 
 /**
  * @description: 数据处理，方便区分多种处理方式
@@ -55,6 +56,15 @@ const transform: AxiosTransform = {
     // 这里逻辑可以根据项目进行修改
     const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS;
     if (hasSuccess) {
+      let successMsg = message;
+      if (successMsg === null || successMsg === undefined || successMsg === '') {
+        successMsg = '操作成功';
+      }
+      if (options.successMessageMode === 'modal') {
+        createSuccessModal({ title: t('sys.api.successTip'), content: successMsg });
+      } else if (options.successMessageMode === 'message') {
+        createMessage.success(successMsg);
+      }
       return result;
     }
 
@@ -172,6 +182,10 @@ const transform: AxiosTransform = {
     const msg: string = response?.data?.error?.message ?? '';
     const err: string = error?.toString?.() ?? '';
     let errMessage = '';
+
+    if (axios.isCancel(error)) {
+      return Promise.reject(error);
+    }
 
     try {
       if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
